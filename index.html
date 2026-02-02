@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Invitation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #5a3d5c;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .heart-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .heart {
+            position: absolute;
+            color: #ff4d6d;
+            font-size: 24px;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+        
+        .header {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .invitation-text {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .invitation-text h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.8rem;
+            color: #ff4d6d;
+            margin-bottom: 15px;
+        }
+        
+        .invitation-text p {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .details {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-bottom: 40px;
+            background-color: #fff9fb;
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px dashed #ffafbd;
+        }
+        
+        .detail-item {
+            text-align: center;
+            padding: 15px;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .detail-item i {
+            font-size: 2.5rem;
+            color: #ff4d6d;
+            margin-bottom: 15px;
+        }
+        
+        .detail-item h3 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            color: #5a3d5c;
+        }
+        
+        .detail-item p {
+            font-size: 1.1rem;
+            color: #7a5a7c;
+        }
+        
+        .response-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .response-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #5a3d5c;
+        }
+        
+        .response-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .response-btn {
+            padding: 15px 40px;
+            font-size: 1.3rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .yes-btn {
+            background-color: #4CAF50;
+            color: white;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+        
+        .yes-btn:hover {
+            background-color: #3d8b40;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.6);
+        }
+        
+        .no-btn {
+            background-color: #f44336;
+            color: white;
+            box-shadow: 0 5px 15px rgba(244, 67, 54, 0.4);
+        }
+        
+        .no-btn:hover {
+            background-color: #d32f2f;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(244, 67, 54, 0.6);
+        }
+        
+        .message {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff0f3;
+            border-radius: 15px;
+            margin-top: 30px;
+            display: none;
+            animation: fadeIn 1s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .message h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #ff4d6d;
+            margin-bottom: 10px;
+        }
+        
+        .message p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff9fb;
+            color: #7a5a7c;
+            font-size: 0.9rem;
+        }
+        
+        .heartbeat {
+            animation: heartbeat 1.5s ease-in-out infinite both;
+            display: inline-block;
+            color: #ff4d6d;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.8rem;
+            }
+            
+            .invitation-text h2 {
+                font-size: 2.2rem;
+            }
+            
+            .response-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .response-btn {
+                width: 80%;
+                justify-content: center;
+            }
+            
+            .detail-item {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="heart-background" id="heartBackground"></div>
+        
+        <div class="header">
+            <h1>My Valentine</h1>
+            <p>A special invitation for someone very special</p>
+        </div>
+        
+        <div class="content">
+            <div class="invitation-text">
+                <h2>Dear iezha jen de guzman<span id="gfName"></span>,</h2>
+                <p>This Valentine's Day, I want to create a beautiful memory with you.</p>
+                <p>I would be honored if you would join me for a caffe date.</p>
+                <p>Will you be my Valentine?</p>
+            </div>
+            
+            <div class="details">
+                <div class="detail-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Date</h3>
+                    <p>February 14th, 2024</p>
+                </div>
+                
+                <div class="detail-item">
+                    <i class="fas fa-clock"></i>
+                    <h3>Time</h3>
+                    <p>7:00 PM</p>
+                </div>
+                
+                <div class="detail-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location</h3>
+                    <p>N/A</p>
+                    <p>let's search for hidden caffe?</p>
+                </div>
+            </div>
+            
+            <div class="response-section">
+                <h3>Will you go out with me this Valentine's Day?</h3>
+                <div class="response-buttons">
+                    <button class="response-btn yes-btn" id="yesBtn">
+                        <i class="fas fa-heart"></i> Absolutely Yes!
+                    </button>
+                    <button class="response-btn no-btn" id="noBtn">
+                        <i class="fas fa-times"></i> Maybe Next Time
+                    </button>
+                </div>
+            </div>
+            
+            <div class="message" id="yesMessage">
+                <h3>You've made me the happiest person!</h3>
+                <p>I can't wait to spend this special evening with you, my love. Get ready for a night filled with romance, laughter, and beautiful memories. I'll pick you up at 7 PM on February 14th. <span class="heartbeat"><i class="fas fa-heart"></i></span></p>
+            </div>
+            
+            <div class="message" id="noMessage">
+                <h3>I understand...</h3>
+                <p>But I'm not giving up! Every day with you is special, and I'll keep trying to make you feel loved. Maybe we can plan something for another time soon. <span class="heartbeat"><i class="fas fa-heart"></i></span></p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Made with <i class="fas fa-heart" style="color:#ff4d6d;"></i> for the most amazing person in my life</p>
+        </div>
+    </div>
+
+    <script>
+        // Create floating hearts in the background
+        const heartBackground = document.getElementById('heartBackground');
+        for (let i = 0; i < 30; i++) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '<i class="fas fa-heart"></i>';
+            heart.style.left = `${Math.random() * 100}%`;
+            heart.style.top = `${Math.random() * 100}%`;
+            heart.style.animationDelay = `${Math.random() * 5}s`;
+            heart.style.fontSize = `${Math.random() * 20 + 15}px`;
+            heart.style.opacity = Math.random() * 0.5 + 0.2;
+            heartBackground.appendChild(heart);
+        }
+        
+        // Get DOM elements
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const yesMessage = document.getElementById('yesMessage');
+        const noMessage = document.getElementById('noMessage');
+        const gfNameElement = document.getElementById('gfName');
+        
+        // Ask for girlfriend's name
+        const gfName = prompt("Please enter your girlfriend's name to personalize the invitation:", "My Love");
+        if (gfName && gfName.trim() !== "") {
+            gfNameElement.textContent = gfName;
+        }
+        
+        // Yes button click handler
+        yesBtn.addEventListener('click', function() {
+            yesMessage.style.display = 'block';
+            noMessage.style.display = 'none';
+            
+            // Create celebration hearts
+            for (let i = 0; i < 20; i++) {
+                createCelebrationHeart();
+            }
+            
+            // Play a success sound (optional)
+            playCelebrationSound();
+        });
+        
+        // No button click handler
+        noBtn.addEventListener('click', function() {
+            noMessage.style.display = 'block';
+            yesMessage.style.display = 'none';
+            
+            // Move the "no" button to a random position when hovered (funny effect)
+            noBtn.addEventListener('mouseover', moveNoButton);
+        });
+        
+        // Function to create celebration hearts
+        function createCelebrationHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '<i class="fas fa-heart" style="color:#ff4d6d;"></i>';
+            heart.style.position = 'fixed';
+            heart.style.left = `${Math.random() * 100}%`;
+            heart.style.top = `${Math.random() * 100}%`;
+            heart.style.fontSize = `${Math.random() * 30 + 20}px`;
+            heart.style.zIndex = '1000';
+            heart.style.pointerEvents = 'none';
+            
+            document.body.appendChild(heart);
+            
+            // Remove heart after animation
+            setTimeout(() => {
+                heart.remove();
+            }, 3000);
+        }
+        
+        // Function to move the "no" button
+        function moveNoButton() {
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        }
+        
+        // Function to play celebration sound (optional)
+        function playCelebrationSound() {
+            // This creates a simple beep sound using the Web Audio API
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = 523.25; // C5 note
+                oscillator.type = 'sine';
+                
+                gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 1);
+            } catch (e) {
+                console.log("Audio could not be played");
+            }
+        }
+        
+        
+        const romanticQuotes = [
+            "Every love story is beautiful, but ours is my favorite.",
+            "I saw that you were perfect, and so I loved you. Then I saw that you were not perfect and I loved you even more.",
+            "You are the source of my joy, the center of my world, and the whole of my heart.",
+            "I love you not only for what you are, but for what I am when I am with you.",
+            "If I had a flower for every time I thought of you, I could walk in my garden forever."
+        ];
+        
+        
+        console.log("Romantic thought for you: " + romanticQuotes[Math.floor(Math.random() * romanticQuotes.length)]);
+    </script>
+</body>
+</html>
